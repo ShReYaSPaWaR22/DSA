@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main(){
+    string a;
+    cout<<"enter string :";
+    cin >> a;
+    string result;
+    for(int i=0;i<a.length();i++){
+        if(a[i]=='a'|| a[i]=='i' || a[i]=='e' || a[i]=='o' || a[i]=='u'){
+            
+        }
+        else{
+            result += a[i];
+        }
+    }
+    
+    
+    cout<<"string without vowels : "<< result <<endl;
+}
