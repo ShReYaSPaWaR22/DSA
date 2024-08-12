@@ -2,7 +2,7 @@
 #include<climits>
 using namespace std;
 int main(){
-    int n,largestelement;
+    int n;
     cout<<"enter the size of the array : ";
     cin >> n;
     int a[n];
