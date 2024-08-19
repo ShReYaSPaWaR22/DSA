@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main() {
+   int arr[] = {6,3,2,5,1,4};
+   int n = sizeof(arr)/sizeof(arr[0]);
+   
+   for(int i=0;i<n-1;i++){
+      int smallest_index = i;
+       for(int j=i+1;j<n;j++){
+           if(arr[j]<arr[smallest_index]){
+               smallest_index = j;
+           }
+       }
+       swap(arr[i],arr[smallest_index]);
+   }
+   cout<<"Sorted Array using selection sort :";
+   for(int i=0;i<n;i++){
+       cout<<arr[i]<<" ";
+   }
+}
