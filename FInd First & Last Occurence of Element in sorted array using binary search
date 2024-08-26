@@ -1,0 +1,78 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+    public :
+    int first(vector<int> &arr,int n,int target){
+        int start=0,end=n-1,first_occurence=-1;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(arr[mid]==target){
+                first_occurence = mid;
+                end = mid-1;
+            }
+            else if(arr[mid]<target){
+                start = mid+1;
+            }
+            else if(arr[mid]>target){
+                end = mid-1;
+            }
+            
+        }
+        return first_occurence;
+    }
+    int last(vector<int> &arr,int n,int target){
+        int start=0,end=n-1,last_occurence=-1;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(arr[mid]==target){
+                last_occurence = mid;
+                start = mid + 1;
+            }
+            else if(arr[mid]<target){
+                start = mid+1;
+            }
+            else if(arr[mid]>target){
+                end = mid-1;
+            }
+        }
+        return last_occurence;
+    }
+    
+    vector<int> result(vector<int> arr, int n, int target){
+        int first_occurence = first(arr,n,target);
+        int last_occurence = last(arr,n,target);
+        if(first_occurence==-1){
+            return{-1,-1};
+        }
+        else{
+            return{first_occurence,last_occurence};
+        }
+        
+        
+    }
+};
+
+int main(){
+    Solution sol;
+    int n;
+    cout<<"Enter the size of the array : ";
+    cin >> n;
+    vector<int> arr(n);
+    cout<<"Enter Elements of the array : ";
+    for(int i=0;i<n;i++){
+        cin >> arr[i];
+    }
+    int target;
+    cout<<"Enter the target element : ";
+    cin>>target;
+    vector<int> answer = sol.result(arr,n,target);
+    
+   if(answer[0]==-1){
+       cout<<"Element not found in the array "<<endl;
+   }
+   else{
+    cout<<"The First Occurence of Element is : "<< answer[0]<<endl;
+    cout<<"The Last Occurence of Element is : "<< answer[1]<<endl;
+  }
+}  
