@@ -1,0 +1,49 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+    public :
+    int result(vector<int> &arr,int n, int target){
+          int start=0,end=n-1,index=-1;
+          while(start<=end){
+              int mid = (start+end)/2;
+              if(target==arr[mid]){
+                  index = mid;
+                  break;
+              }
+              else if(target>arr[mid]){
+                  start = mid+1;
+              }
+              else {
+                  index = mid;
+                  end = mid-1;
+              }
+          }
+          return index;
+    }
+};
+
+int main(){
+    Solution sol;
+    int n;
+    cout<<"enter the size of the array : ";
+    cin >> n;
+    vector<int> arr(n);
+    cout<<"Enter the elements in the array : ";
+    for(int i=0;i<n;i++){
+        cin >> arr[i];
+    }
+    int target;
+    cout<<"enter the target element : ";
+    cin>>target;
+    int answer = sol.result(arr,n,target);
+    
+    if(answer==-1){
+        cout<<"element should not be present in the array : ";
+    }
+    else{
+    cout<<"The target element should be present at the index : " <<answer<<endl;
+    }
+    
+    
+}
