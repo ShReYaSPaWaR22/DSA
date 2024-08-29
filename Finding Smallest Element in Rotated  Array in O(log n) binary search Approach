@@ -1,0 +1,42 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+  public :
+   int result(vector<int> &arr,int n){
+       //BOUNDARY CASES [1],[2,1]
+       if(arr[0]<arr[n-1] || n==1){
+           return arr[0];
+       }
+       int start=0,end=n-1,min;
+       while(start<=end){
+           int mid = (start+end)/2;
+          //IF ARRAY IS SORTED AT LEFT SIDE WE SHOULD GO TO RIGHT SIDE
+           if(arr[mid]>arr[0]){
+               start = mid+1;
+           }
+          //IF ARRAY IS SORTED AT RIGHT SIDE WE SHOULD GO TO LEFT SIDE
+           else if(arr[mid]<arr[0]){
+               end = mid-1;
+               min = mid;
+           }
+       }
+       return arr[min];
+   }
+};
+int main(){
+    Solution sol;
+    int n;
+    cout<<"Enter the size of the array : ";
+    cin >> n;
+    vector<int> arr(n);
+    cout<<"Enter the elements in the array : ";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    int ans = sol.result(arr,n);
+    
+    cout<<"The Smallest Element in the rotated Array is  : "<<ans<<endl;
+
+}
