@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+class Solution{
+  private :
+   int size;
+   int *arr;
+   int top;
+  public :
+   Solution(int size){
+       this -> size = size;
+       arr = new int[size];
+       top = -1;
+   }
+   void push(int element){
+       if(top<size-1){
+           top++;
+           arr[top]=element;
+       }
+       else{
+           cout<<"Stack Overflow"<<endl;
+       }
+   }
+   void pop(){
+       if(top<0){
+           cout<<"Stack is Empty"<<endl;
+       }
+       else{
+           top--;
+       }
+   }
+   void peek(){
+       if(top<0){
+           cout<<"Stack is Empty"<<endl;
+       }
+       else{
+           cout<<arr[top]<<endl;
+       }
+   }
+};
+int main()
+{
+ Solution sol(3);
+ sol.push(3);
+ sol.peek();
+ sol.push(2);
+ sol.push(1);
+ sol.peek();
+ sol.push(0);
+ sol.pop();
+ sol.peek();
+ 
+ 
+}
