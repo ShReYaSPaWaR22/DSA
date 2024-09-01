@@ -1,0 +1,37 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+    public :
+    int result(vector<int>& arr,int n, int k) {
+        int start=0,end=n-1,ans=n;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(arr[mid]-mid-1>=k){
+                //arr[mid]-mid-1 GIVES TOTAL NO. OF MISSING ELEMENTS TILL CURRENT INDEX
+                ans = mid;
+                end = mid-1;
+            }
+            else{
+                start = mid+1;
+            }
+        }
+        return ans+k; // ANS+K GIVES THE KTH MISSING ELEMENT
+    }
+};
+int main(){
+   Solution sol; 
+   int n;
+   cout<<"enter the size of the array : ";
+   cin >> n;
+   vector<int> arr(n);
+   cout<<"Enter the elements in the array : ";
+   for(int i=0;i<n;i++){
+       cin>>arr[i];
+   }
+   int k;
+   cout<<"Enter the kth missing element no : ";
+   cin>>k;
+   int answer = sol.result(arr,n,k);
+   cout<<"The "<<k<<" th missing element is : "<< answer <<endl;
+}
