@@ -1,12 +1,13 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-int main() {
+int main(){
     string str;
-    cout<<"enter the string : ";
-    cin >> str;
+    cout<<"Enter the string : ";
+    cin>>str;
     int start=0,end=str.length()-1;
+    
     while(start<=end){
-        if(str[start]==str[end]){
+        if(tolower(str[start])==tolower(str[end])){              // CONVERTING UPPERCASE CHARACTERS TO LOWERCASE
             start++;
             end--;
         }
@@ -15,7 +16,7 @@ int main() {
             break;
         }
     }
-   if(start>end){
-       cout<<"Given String is palindrome"<<endl;
-   }
+    if(start>end){
+        cout<<"Given String is Palindrome "<<endl;
+    }
 }
