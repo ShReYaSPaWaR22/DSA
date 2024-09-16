@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int row,col;
+    cout<<"Enter the dimensions of the matrix : ";
+    cin>> row >> col;
+    
+    int arr[row][col];
+    cout<<"Enter the elements : ";
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            cin>>arr[i][j];
+        }
+    }
+    
+    int sum=0,index=-1;
+    for(int i=0;i<row;i++){
+       int row_sum = 0;
+        for(int j=0;j<col;j++){
+          row_sum = row_sum + arr[row][col];
+          if(row_sum>sum){
+              index = i;
+          }
+        }
+    }
+    cout<<"The Row  which has highest sum of elements is : "<<index<<endl;
+}
