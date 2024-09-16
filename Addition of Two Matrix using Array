@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int row, col;
+    cout<<"Enter the dimensions of the matrix : ";
+    cin>> row >> col;
+    int arr[row][col],sum=0;
+    int arr1[row][col];
+    cout<<"Enter the elements in the First matrix : ";
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            cin>>arr1[i][j];
+        }
+    }
+    int arr2[row][col];
+    cout<<"Enter the elements in the Second matrix : ";
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            cin>>arr2[i][j];
+        }
+    }
+    
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            arr[i][j] = arr1[i][j] + arr2[i][j];
+        }
+    }
+    
+    cout<<"The resultant matrix is : ";
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            cout<<arr[i][j]<<" ";
+        }
+    }
+    
+}
