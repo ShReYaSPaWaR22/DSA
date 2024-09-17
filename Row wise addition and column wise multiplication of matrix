@@ -1,0 +1,40 @@
+//ROWWISE ADDITION OF ELEMENTS AND COLUMNWISE MULTIPLICATION
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+  public : 
+   void result(vector<vector<int>> &matrix, int row, int col){
+       for(int i=0;i<row;i++){
+             int sum = 0;
+           for(int j=0;j<col;j++){
+               sum += matrix[i][j];
+           }
+           cout<<"The sum of row no. "<<i<<" is : "<<sum<<endl;
+       }
+       
+       for(int i=0;i<col;i++){
+             int mult = 1;
+           for(int j=0;j<row;j++){
+               mult = mult*matrix[j][i];
+           }
+           cout<<"The Multiplication of Column no. "<<i<<" is : "<<mult<<endl;
+       }
+   }
+};
+int main(){
+    Solution sol;
+    int row,col;
+    cout<<"Enter the dimensions of the matrix : ";
+    cin >> row >> col;
+    vector<vector<int>> matrix(row,vector<int>(col));
+    cout<<"Enter the elements in the matrix : ";
+    for(int i=0;i<row;i++){
+           for(int j=0;j<col;j++){
+              cin>>matrix[i][j]; 
+           }
+       }
+    
+    cout<<"ROWWISE ADDITION & COLUMNWISE MULTIPLICATION OF ELEMENTS OF MATRIIX :"<<endl;
+    sol.result(matrix,row,col);
+}
