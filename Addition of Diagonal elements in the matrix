@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    int row, col;
+    cout << "Enter the dimensions of the matrix: ";
+    cin >> row >> col;
+
+    if (row != col) {
+        cout << "Matrix must be square to have diagonals." << endl;
+        return 1;
+    }
+
+    int arr[row][col];
+    cout << "Enter the elements in the matrix: ";
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    int first_sum = 0, second_sum = 0;
+    for (int i = 0; i < row; i++) {
+        first_sum += arr[i][i];
+        second_sum += arr[i][row - i - 1];
+    }
+
+    cout << "The addition of the 1st diagonal elements is: " << first_sum << endl;
+    cout << "The addition of the 2nd diagonal elements is: " << second_sum << endl;
+
+    return 0;
+}
