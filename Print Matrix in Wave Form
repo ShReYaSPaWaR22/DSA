@@ -1,0 +1,39 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+    public : 
+    void result(vector<vector<int>> matrix, int row, int col){
+        for(int i=0;i<col;i++){
+            if(i%2==0){
+                for(int j=0;j<row;j++){
+                    cout<<matrix[j][i]<<" ";
+                }
+            }
+            else if(i%2==1){
+                for(int j=row-1;j>=0;j--){
+                    cout<<matrix[j][i]<<" ";
+                }
+            }
+        }
+    }
+};
+int main(){
+    Solution sol;
+    int row,col;
+    cout<<"Enter the dimensions of the matrix : ";
+    cin>>row>>col;
+    vector<vector<int>> matrix(row,vector<int> (col));
+    
+    //TAKING INPUT MATRIX FROM USER
+    cout<<"Enter the elements in the matrix : ";
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            cin>>matrix[i][j];
+        }
+    }
+   cout<<"Matrix in Wave Form : ";
+   sol.result(matrix,row,col);
+   
+   
+}
