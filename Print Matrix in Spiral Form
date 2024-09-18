@@ -1,0 +1,44 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+  public :
+   void spiral_matrix(vector<vector<int>> &matrix, int row, int col){
+       int top=0,right=col-1,bottom=row-1,left=0;
+     while(top<=bottom && left<=right){
+       for(int i=left;i<=right;i++){
+           cout<<matrix[top][i]<<" ";
+       }
+       top++;
+       for(int i=top;i<=bottom;i++){
+           cout<<matrix[i][right]<<" ";
+       }
+       right--;
+       for(int i=right;i>=left;i--){
+           cout<<matrix[bottom][i]<<" ";
+       }
+       bottom--;
+       for(int i=bottom;i>=top;i--){
+           cout<<matrix[i][left]<<" ";
+       }
+       left++;
+     } 
+       
+   }
+  
+};
+int main(){
+  Solution sol;
+  int row,col;
+  cout<<"Enter the dimensions of the matrix : ";
+  cin >> row >> col;
+  vector<vector<int>> matrix(row,vector<int>(col));
+  cout<<"Enter the elements in the matrix : ";
+  for(int i=0;i<row;i++){
+      for(int j=0;j<col;j++){
+          cin>>matrix[i][j];
+      }
+  }
+  sol.spiral_matrix(matrix,row,col);
+  
+}
