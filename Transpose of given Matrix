@@ -1,0 +1,38 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main() {
+    int row, col;
+    cout << "Enter the dimensions of the matrix: ";
+    cin >> row >> col;
+    
+    vector<vector<int>> matrix(row, vector<int>(col));
+    cout << "Enter the elements of the matrix: ";
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    // Initialize the transposed matrix with swapped dimensions (col x row)
+    vector<vector<int>> transpose_matrix(col, vector<int>(row));
+
+    // Transpose logic
+    for (int i = 0; i < col; i++) {
+        for (int j = 0; j < row; j++) {
+            transpose_matrix[i][j] = matrix[j][i];
+        }
+    }
+    
+    // Correctly print the transposed matrix (col rows and row columns)
+    cout << "The Transposed Matrix of the given matrix is: " << endl;
+    for (int i = 0; i < col; i++) {
+        for (int j = 0; j < row; j++) {
+            cout << transpose_matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
