@@ -1,0 +1,41 @@
+//ROATATE MATRIX BY 90 DEGREE
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+  public :  
+    vector<vector<int>> result(vector<vector<int>> &matrix, int row, int col){
+       vector<vector<int>> matrix_90(col, vector<int> (row));
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+              matrix_90[j][row-i-1] = matrix[i][j];              // MAIN LOGIC FOR ROTATION
+            }
+        }
+        return matrix_90;
+    }
+};
+int main(){
+    Solution sol;
+    int row,col;
+    cout<<"Enter the dimensions of the matrix : ";
+    cin >> row >> col;
+    
+    vector<vector<int>> matrix(row,vector<int>(col));
+    
+    cout<<"Enter the elements in the matrix : ";
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            cin>>matrix[i][j];
+        }
+    }
+    
+    vector<vector<int>> ans = sol.result(matrix,row,col);
+    
+    cout<<"The rotated matrix is : "<<endl;
+    for(int i=0;i<col;i++){
+        for(int j=0;j<row;j++){
+            cout<<ans[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
