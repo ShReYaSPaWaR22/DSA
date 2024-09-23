@@ -1,0 +1,49 @@
+//ROTATE MATRIX K TIMES
+#include<iostream>
+#include<vector>
+using namespace std;
+class Solution{
+    public :
+        vector<vector<int>> result(vector<vector<int>> &matrix, int n,int k){
+           k = k%4;         //because after each 4 rotation matrix will get to its original position
+           vector<vector<int>> ktimes_rotated_matrix(n,vector<int>(n));
+           for(int z=0;z<k;z++) {   
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    ktimes_rotated_matrix[j][n-i-1] = matrix[i][j];
+                }
+            }
+            matrix = ktimes_rotated_matrix;
+         }
+         return matrix;
+        }    
+};
+int main(){
+    Solution sol;
+    int n;
+    cout<<"Enter the dimension of the matrix : ";
+    cin >> n;
+    
+    vector<vector<int>> matrix(n,vector<int>(n));
+    
+    cout<<"Enter the elements in the matrix : ";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cin>>matrix[i][j];
+        }
+    }
+    
+    int k;
+    cout<<"Enter how many times you want to rotate array : ";
+    cin >> k;
+    
+    vector<vector<int>> final_ans = sol.result(matrix,n,k);
+    
+    cout<<"Matrix after "<<k<<" times rotation : "<<endl;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout<<final_ans[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
