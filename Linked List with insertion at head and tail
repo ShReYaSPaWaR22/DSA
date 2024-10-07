@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+class Node{
+  public : 
+  int data;
+  Node * next;
+  
+  Node(int data){
+      this-> data = data;
+      next = NULL;
+  }
+};
+
+class LinkedList{
+    public : 
+    Node * head;
+    
+    LinkedList(){
+        head = NULL;
+    }
+    
+    void insert_at_head(int data){
+        Node * temp;
+        temp = new Node(data);
+        temp->next = head;
+        head = temp;
+    }
+    
+    void insert_at_tail(int data){
+        Node * temp = new Node(data);
+        if(head==NULL){
+            head = temp;
+            return;
+        }
+        Node * tail = head;
+        while(tail->next!=NULL){
+            tail = tail->next;
+        }
+        tail->next = temp;
+    }
+    
+    
+    void print(){
+        Node * temp = head;
+        if(head==NULL){
+            cout<<"LinkedList is empty"<<endl;
+            return;
+        }
+        while(temp!=NULL){
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        }
+        cout<<endl;
+    }
+};
+
+int main(){
+    LinkedList list;
+    list.insert_at_head(4);
+    list.insert_at_head(3);
+    list.insert_at_head(2);
+    list.insert_at_head(1);
+    list.insert_at_tail(5);
+    
+    list.print();
+}
