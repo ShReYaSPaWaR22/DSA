@@ -1,0 +1,72 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Node{
+  public :
+  int data;
+  Node * next;
+  
+  Node(int data){
+      this-> data = data;
+      next = NULL;
+  }
+};
+
+class LinkedList{
+  public :
+  Node * head;
+  
+  LinkedList(){
+      head = NULL;
+  }
+  
+  void insert_at_head(int data){
+      Node *temp;
+      temp = new Node(data);
+      temp-> next = head;
+      head = temp;
+  }
+  
+  void print(){
+      Node * temp = head;
+      if(head==NULL){
+          cout<<"Linked List is empty"<<endl;
+          return;
+      }
+      while(temp!=NULL){
+          cout<<temp->data<<" ";
+          temp = temp->next;
+      }
+      cout<<endl;
+  }
+  
+  void reverse_linked_list(){
+      Node *prev = NULL;
+        Node *curr = head;
+        Node *next = NULL;
+
+        // Reverse the linked list
+        while (curr != NULL) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        // Set the head to the new front
+        head = prev;
+    }
+    
+};
+
+int main(){
+    LinkedList a;
+    a.insert_at_head(5);
+    a.insert_at_head(4);
+    a.insert_at_head(3);
+    a.insert_at_head(2);
+    
+    a.print();
+    a.reverse_linked_list();
+    a.print();
+}
